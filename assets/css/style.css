@@ -1,18 +1,25 @@
 body {
-  margin: 0%;
-  padding: 0%;
-  font-family: Dancing Script;
-  font-size: 48px;
-  text-shadow: 4px 4px 4px #aaa;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 35px;
+  /* text-shadow: 4px 4px 4px #aaa; */
+  background-color: rgb(235, 222, 222);
 }
 
-header {
-  margin-bottom: 0%;
-  padding-bottom: 0%;
+#search-btn {
+  display: flex;
 }
 
-.weather-cards {
-  margin-top: 0%;
-  padding-top: 0%;
-  margin-bottom: 5%;
+#current-day {
+  font-size: larger;
+  font-weight: bold;
+}
+
+#current-city {
+  font-size: larger;
+  font-weight: bold;
+}
+
+#prev-searches {
+  font-size: larger;
+  font-weight: bold;
 }
