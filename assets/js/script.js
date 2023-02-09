@@ -1,20 +1,31 @@
 let apiKey = "0f6e217f50843357f6704a3782023132"
 let searchBtn = document.getElementById("search-button");
-let weatherCard = document.getElementById("weather-card");
+// let weatherCard = document.getElementById("weather-card"); Not sure what to use for yet
 let currentCity = document.getElementById("current-city");
+let displayCity1 = document.getElementById("dis-city-1");
+let displayCity2 = document.getElementById("dis-city-2");
+let displayCity3 = document.getElementById("dis-city-3");
+let displayCity4 = document.getElementById("dis-city-4");
+let displayCity5 = document.getElementById("dis-city-5");
 let currentDate = document.getElementById("current-date");
-let currentCondition = document.getElementById("current-condition");
+let currentSymbol = document.getElementById("current-symbol")
+// let currentCondition = document.getElementById("current-condition"); Not sure what to use for yet
 let currentTemp = document.getElementById("current-temperature");
-let currentTime = document.getElementById("current-time");
+// let currentTime = document.getElementById("current-time");
 let currentDay = document.getElementById("current-day");
 let currentHumidity = document.getElementById("current-humidity");
 let currentWind = document.getElementById("current-wind");
-let day1 = document.getElementById("current-day-1");
+let day1 = document.getElementById("day-1");
 let day2 = document.getElementById("day-2");
 let day3 = document.getElementById("day-3");
 let day4 = document.getElementById("day-4");
 let day5 = document.getElementById("day-5");
-let prevCities = document.getElementById("prev-searches");
+let date1 = document.getElementById("date-1");
+let date2 = document.getElementById("date-2");
+let date3 = document.getElementById("date-3");
+let date4 = document.getElementById("date-4");
+let date5 = document.getElementById("date-5");
+// let prevCities = document.getElementById("prev-searches"); Not sure what to use for
 let city1 = document.getElementById("city-1");
 let city2 = document.getElementById("city-2");
 let city3 = document.getElementById("city-3");
@@ -44,20 +55,32 @@ function getApi(event) {
   })
     .then(function (data) {
       currentCity.textContent = searchBoxCity;
-      currentTemp.textContent = parseInt(data.main.temp) + "\u00B0 C";
+      currentTemp.textContent = `Temperature: ${parseInt(data.main.temp)} \u00B0 C`;
       currentHumidity.textContent = `Humidity: ${data.main.humidity} %`;
+      currentSymbol.setAttribute("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
       currentWind.textContent = "Wind: " + parseInt(data.wind.speed) + " kmh";
-      humDay1.textContent = `H:${data.main.humidity}%`;
-      winDay1.textContent = "W:" + parseInt(data.wind.speed) + "kmh";
-      currentCondition.textContent = data.weather[0].description;
+      displayCity1.textContent = searchBoxCity;
+      displayCity2.textContent = searchBoxCity;
+      displayCity3.textContent = searchBoxCity;
+      displayCity4.textContent = searchBoxCity;
+      displayCity5.textContent = searchBoxCity;
+      humDay1.textContent = `Humidity: ${data.main.humidity}%`;
+      winDay1.textContent = "Wind:" + parseInt(data.wind.speed) + "kmh";
+      // currentCondition.textContent = data.weather[0].description;
       currentDate.textContent = moment().format("MM.DD.YYYY");
+      console.log(currentDate);
       currentDay.textContent = moment().format("dddd");
-      currentTime.textContent = `${moment().format("H:mm")} EST`;
+      // currentTime.textContent = `${moment().format("H:mm")} EST`;
       day1.textContent = moment().add(1, "d").format("ddd");
       day2.textContent = moment().add(2, "d").format("ddd");
       day3.textContent = moment().add(3, "d").format("ddd");
       day4.textContent = moment().add(4, "d").format("ddd");
       day5.textContent = moment().add(5, "d").format("ddd");
+      date1.textContent = moment().add(1, 'days').format('MM.DD.YYYY');
+      date2.textContent = moment().add(1, 'days').format('MM.DD.YYYY');
+      date3.textContent = moment().add(1, 'days').format('MM.DD.YYYY');
+      date4.textContent = moment().add(1, 'days').format('MM.DD.YYYY');
+      date5.textContent = moment().add(1, 'days').format('MM.DD.YYYY');
     });
 
     fetch(futureWeather)
@@ -82,9 +105,10 @@ function getApi(event) {
       console.log(data.list[32].main.humidity);
       console.log(data.list[32].wind.speed);
 
-      tempDay1.textContent = parseInt(data.list[0].main.temp) + "\u00B0C";
-      humDay1.textContent = `H:${data.list[0].main.humidity}%`;
-      winDay1.textContent = "W:" + parseInt(data.list[0].wind.speed) + "kmh";
+      tempDay1.textContent = `Temperature: ${parseInt(data.list[1].main.temp)} \u00B0 C`;
+      humDay1.textContent = `Humidity: ${data.list[1].main.humidity}%`;
+      winDay1.textContent = "Wind:" + parseInt(data.list[1].wind.speed) + "kmh";
+      document.getElementById("search-box").value = "";
     });
 }
 

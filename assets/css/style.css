@@ -1,25 +1,201 @@
-body {
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 35px;
-  /* text-shadow: 4px 4px 4px #aaa; */
-  background-color: rgb(235, 222, 222);
+html {
+  scroll-behavior: smooth;
 }
 
-#search-btn {
+/* Navbar */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: gray;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.website-name {
+  color: white;
+  font-size: 20px;
+  margin: 0;
+}
+
+.search-form {
   display: flex;
 }
 
-#current-day {
-  font-size: larger;
-  font-weight: bold;
+input[type="text"] {
+  width: 60%;
+  padding: 10px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
 }
 
-#current-city {
-  font-size: larger;
-  font-weight: bold;
+button[type="submit"] {
+  width: 30%;
+  padding: 10px;
+  background-color: white;
+  color: gray;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-#prev-searches {
-  font-size: larger;
-  font-weight: bold;
+/* Previous cities column */
+
+.city-column {
+  width: 20%;
+  height: 100%;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  padding: 20px;
+  float: left;
+}
+
+.column-title {
+  font-size: 20px;
+  margin: 0;
+}
+
+.city-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.city {
+  background-color: white;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  font-size: 18px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+/* Main Weather Card */
+
+.weather-card {
+  width: 30%;
+  height: auto;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  margin: 30px auto;
+}
+
+.city-name {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 0;
+  font-size: 20px;
+}
+
+.card-info {
+  padding: 20px;
+}
+
+.date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.month, .day {
+  font-size: 18px;
+  margin: 0 10px;
+}
+
+.fa-sun {
+  font-size: 30px;
+  color: #ffc107;
+  margin-left: 10px;
+}
+
+.day-name, .wind-speed, .temperature, .humidity {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+/* 5 Weather cards */
+
+.days-weather-card {
+  width: 25%;
+  height: auto;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  margin: 1%;
+}
+
+.five-weather-card {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Media queries */
+
+@media only screen and (max-width: 600px) {
+  /* Navbar */
+  .navbar {
+    flex-wrap: wrap;
+  }
+  .search-form {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  input[type="text"],
+  button[type="submit"] {
+    width: 100%;
+  }
+
+  /* Previous cities column */
+  .city-column {
+    width: 100%;
+    padding: 10px;
+  }
+
+  /* Main Weather Card */
+  .weather-card,
+  .days-weather-card {
+    width: 100%;
+    margin: 20px 0;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .city-column {
+    width: 100%;
+    height: auto;
+    float: none;
+    margin: 20px 0;
+  }
+
+  .weather-card {
+    width: 100%;
+    height: auto;
+    margin: 20px 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .five-weather-card {
+    flex-wrap: wrap;
+  }
+
+  .days-weather-card {
+    width: 100%;
+    height: auto;
+    margin: 20px 0;
+  }
+
+  input[type="text"], button[type="submit"] {
+    width: 100%;
+    margin: 10px 0;
+  }
 }
