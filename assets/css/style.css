@@ -2,6 +2,15 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  background-image: url("../images/bg-image-3.jpeg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
 /* Navbar */
 
 .navbar {
@@ -9,7 +18,7 @@ html {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: gray;
+  background-color: transparent;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
