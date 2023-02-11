@@ -31,3 +31,6 @@ Use the GitHub deployed link and type in the name of the city in the search fiel
 ## License
 
 Please refer to the license in the repo.
+
+## Screenshot
+
