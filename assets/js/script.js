@@ -46,30 +46,18 @@ let winDay4 = document.getElementById("day-4-Win");
 let winDay5 = document.getElementById("day-5-Win");
 let allWeatherCards = document.getElementById("all-weather-cards");
 let prevCities = document.getElementById("prev-searches");
-// let city1 = document.createElement("li");
 allWeatherCards.setAttribute("Style", "display: none");
-// prevCities.setAttribute("Style", "display: none");
+prevCities.setAttribute("Style", "display: none");
 
 function getApi(event, city) {
 
   event.preventDefault();
 
   let searchBoxCity;
-  console.log(searchBoxCity);
+
   if (city === null || city === "" || city === undefined) {
     searchBoxCity = document.getElementById("search-box").value;
-  } else {
-    searchBoxCity = city
-  }
-
-  let currentWeather = `https://api.openweathermap.org/data/2.5/weather?q=${searchBoxCity}&temperature.value&units=metric&humidity.value&wind.value&units=metric&appid=0f6e217f50843357f6704a3782023132`;
-  let futureWeather = `https://api.openweathermap.org/data/2.5/forecast?q=${searchBoxCity}&units=metric&temprature.value&humidity.value&wind.value&appid=0f6e217f50843357f6704a3782023132`;
-  document.getElementById("search-box").value = "";
-console.log(searchBoxCity);
-  allWeatherCards.setAttribute("Style", "display: block");
-  prevCities.setAttribute("Style", "display: block");
-
-  localStorage.setItem("prev-city", searchBoxCity);
+    localStorage.setItem("prev-city", searchBoxCity);
 
   if (prevCity === "") {
     return;
@@ -78,12 +66,21 @@ console.log(searchBoxCity);
     let city1 = document.createElement("li");
     prevCityUl.appendChild(city1);
     city1.classList.add("city");
-    city1.setAttribute("type", "onClick")
     city1.textContent = prevCity;
     city1.addEventListener("click", function(event) {
-      getApi(event, prevCity)
+    getApi(event, searchBoxCity);
     });
   }
+  } else {
+    searchBoxCity = city
+  }
+
+  let currentWeather = `https://api.openweathermap.org/data/2.5/weather?q=${searchBoxCity}&temperature.value&units=metric&humidity.value&wind.value&units=metric&appid=0f6e217f50843357f6704a3782023132`;
+  let futureWeather = `https://api.openweathermap.org/data/2.5/forecast?q=${searchBoxCity}&units=metric&temprature.value&humidity.value&wind.value&appid=0f6e217f50843357f6704a3782023132`;
+  document.getElementById("search-box").value = "";
+
+  allWeatherCards.setAttribute("Style", "display: block");
+  prevCities.setAttribute("Style", "display: block");
 
   fetch(currentWeather)
   .then(function (response) {
@@ -148,11 +145,3 @@ console.log(searchBoxCity);
 }
 
 searchBtn.addEventListener("click", getApi);
-// city1.onclick = getApi();
-
-// for (i = 0; i <= city1.length; i++) {
-//   city1[i].addEventListener("click", function(event) {
-//     event.preventDefault
-//   }, getApi);
-//   console.log(city1[i]);
-// }
