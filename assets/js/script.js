@@ -27,14 +27,7 @@ let date2 = document.getElementById("date-2");
 let date3 = document.getElementById("date-3");
 let date4 = document.getElementById("date-4");
 let date5 = document.getElementById("date-5");
-// let city1 = document.getElementById("city-1");
-// let city2 = document.getElementById("city-2");
-// let city3 = document.getElementById("city-3");
-// let city4 = document.getElementById("city-4");
-// let city5 = document.getElementById("city-5");
-// let city6 = document.getElementById("city-6");
 let prevCityUl = document.getElementById("city-ul");
-console.log(prevCityUl);
 let prevCity = [];
 let tempDay1 = document.getElementById("day-1-temp");
 let tempDay2 = document.getElementById("day-2-temp");
@@ -53,6 +46,7 @@ let winDay4 = document.getElementById("day-4-Win");
 let winDay5 = document.getElementById("day-5-Win");
 let allWeatherCards = document.getElementById("all-weather-cards");
 let prevCities = document.getElementById("prev-searches");
+let city1 = document.createElement("li");
 allWeatherCards.setAttribute("Style", "display: none");
 // prevCities.setAttribute("Style", "display: none");
 
@@ -95,8 +89,6 @@ function getApi(event) {
       displayCity3.textContent = searchBoxCity;
       displayCity4.textContent = searchBoxCity;
       displayCity5.textContent = searchBoxCity;
-      // humDay1.textContent = `Humidity: ${data.main.humidity}%`;
-      // winDay1.textContent = "Wind:" + parseInt(data.wind.speed) + "kmh";
       currentDate.textContent = moment().format("MM-DD-YYYY");
       currentDay.textContent = moment().format("dddd");
       day1.textContent = moment().add(1, "d").format("ddd");
@@ -116,23 +108,6 @@ function getApi(event) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
-      console.log(data.list[0].main.temp);
-      console.log(data.list[0].main.humidity);
-      console.log(data.list[0].wind.speed);
-      console.log(data.list[8].main.temp);
-      console.log(data.list[8].main.humidity);
-      console.log(data.list[8].wind.speed);
-      console.log(data.list[17].main.temp);
-      console.log(data.list[17].main.humidity);
-      console.log(data.list[17].wind.speed);
-      console.log(data.list[25].main.temp);
-      console.log(data.list[25].main.humidity);
-      console.log(data.list[25].wind.speed);
-      console.log(data.list[33].main.temp);
-      console.log(data.list[33].main.humidity);
-      console.log(data.list[33].wind.speed);
-      console.log(data.list[1].weather[0].icon);
 
       tempDay1.textContent = `Temperature: ${parseInt(data.list[1].main.temp)} \u00B0 C`;
       humDay1.textContent = `Humidity: ${data.list[1].main.humidity}%`;
@@ -163,4 +138,9 @@ function getApi(event) {
 
 searchBtn.addEventListener("click", getApi);
 
-city1.addEventListener("click", getApi);
+for (i = 0; i <= city1.length; i++) {
+  city1[i].addEventListener("click", getApi);
+  console.log(city1[i]);
+}
+
+console.log(city1[i]);
